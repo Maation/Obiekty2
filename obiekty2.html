@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {margin: 0;}
+        div {width: 500px; height: 300px; float: left;}
+    </style>
+</head>
+
+<body>
+    <div style="background-color:aquamarine; display: flex; align-items: center; justify-content: center;">
+        <input type="button" id="btn" value="jestem konfigurowalnym obiektem">
+    </div>
+
+    <div style="background-color:khaki; display: flex; align-items: center;">
+        <div style="height: auto; margin: 20px;">
+            <h1>Konfiguracja obiektu</h1>
+            <input type="color" id="color">kolor<br>
+            <input type="textbox" id="napis">napis<br>
+            <input type="range" id="range" min="0" max="200">szerokość: <span id="szer">100</span>px<br>
+            <input type="button" id="ok" value="ok">
+        </div>
+    </div>
+</body>
+</html>
+<script>
+var btn = document.getElementById('btn')
+
+document.getElementById('ok').onclick = () => {
+    myButton.color = document.getElementById('color').value
+    myButton.text = document.getElementById('napis').value
+    myButton.width = document.getElementById('range').value + 'px'
+
+    btn.style.color = myButton.color
+    btn.style.width = myButton.width
+    btn.value = myButton.text
+}
+
+btn.onclick = () => {
+    myButton.toString()
+}
+
+document.getElementById('range').onchange = () => {
+    document.getElementById('szer').innerText = document.getElementById('range').value
+}
+
+let myButton = {
+    color: '',
+    text: '',
+    width: '',
+    toString: function() {
+        alert(`Konfiguracja obiektu: \n kolor: ${this.color} \n napis: ${this.text} \n szerokość: ${this.width}`)
+    }
+}
+</script>
